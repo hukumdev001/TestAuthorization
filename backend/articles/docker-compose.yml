@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  mongo_db_articles:
+    container_name: db_container_articles
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27027:27017
+    volumes:
+      - mongo_db_articles:/data/db
+
+  articles_api:
+    build: .
+    ports:
+      - 8001:8001
+    volumes:
+      - .:/usr/src/app
+    environment:
+      PORT: 8001
+      MONGODB_URI: mongodb://mongo_db_articles:27017/publishers_articles
+    depends_on:
+      - mongo_db_articles
+
+volumes:
+  mongo_db_articles: {}

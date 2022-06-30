@@ -1,0 +1,24 @@
+{
+  "presets": [
+    "@babel/preset-typescript",
+    ["@babel/preset-react"],
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    ["@babel/transform-runtime"],
+    [
+      "babel-plugin-module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "@components": "./src/components",
+          "@config": "./src/config",
+          "@constants": "./src/constants",
+          "@navigation": "./src/navigation",
+          "@redux": "./src/redux",
+          "@pages": "./src/pages",
+        }
+      }
+    ]
+  ]
+}
