@@ -12,10 +12,9 @@ const dbErrorHandler = (connection: mongoose.Connection) => {
 const init = async ({}) => {
   let connection
   try {
-    log('connecting db')
     registerModels()
 
-    await mongoose.connect(process.env.MONGODB_URI || '')
+    await mongoose.connect('mongodb://localhost:27017/test')
     connection = mongoose.connection
     log('DB connected successfully')
 
