@@ -33,14 +33,12 @@ interface SelectProps {
   roles: RoleType[];
   selected: string[];
   handleChange: (e: SelectChangeEvent<string[]>) => void;
-  from: string
 }
 
 export default function SelectComponent({
   roles,
   selected,
   handleChange,
-  from
 }: SelectProps) {
   const theme = useTheme();
 

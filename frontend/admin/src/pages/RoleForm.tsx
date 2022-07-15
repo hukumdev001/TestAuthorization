@@ -82,17 +82,7 @@ const RoleForm: FC<{ type: string }> = ({ type }) => {
       await role.create(toSend);
       text = "created";
     } else {
-      if (policyRoleId && selected.length) {
-        await policyRole.update(policyRoleId, {
-          roleid: [roleState.ID],
-          policyid: selected,
-        });
-      } else if (selected.length && !policyRoleId) {
-        await policyRole.create({
-          roleid: [roleState.ID],
-          policyid: selected,
-        });
-      }
+      
       if (params.id) await role.update(params.id, roles);
       text = "updated";
     }
@@ -123,11 +113,14 @@ const RoleForm: FC<{ type: string }> = ({ type }) => {
         {type === "create" ? "Create a Role" : `Edit: ${roleState.Name} `}
       </p>
       <div style={center}>
-        <SelectComponent2
+        {
+          type == "created" ?  <SelectComponent2
           policies={policies}
           handleChange={handleChange}
           selected={selected}
-        />
+        /> : null
+        }
+       
         <Input
           type={type}
           isEdit={roleState.Name}
@@ -140,7 +133,7 @@ const RoleForm: FC<{ type: string }> = ({ type }) => {
           handleSubmit={handleSubmit}
           type={type}
           errorX={errorX}
-          toValidate={[roles.name, true]}
+
         />
       </div>
     </div>

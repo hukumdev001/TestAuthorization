@@ -24,12 +24,15 @@ export const checkPermissions =
 
       const { permission } = client
 
+      console.log(user.roles)
+      const AllPermission: any = await permission.getAllPermissionsByRoleName(user.roles[0])
 
-      const AllPermission: any = await permission.getAll()
+      console.log('AllPermmision', AllPermission)
 
+      console.log('Route Permission', Permission)
 
       if (
-        !Permission.some((r) => AllPermission.filter((e : any) => e.Action === r).length > 0) &&
+        !Permission.some((r) => AllPermission.filter((e: any) => e.Action === r).length > 0) &&
         Permission.length > 0
       )
         throw { message: 'Permission Denied', status: 403 }

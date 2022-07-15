@@ -94,7 +94,7 @@ export default function ViewPermissionPolicy() {
         style={{ marginBottom: "20px" }}
         onClick={() => navigate("/admin/create-policyPermission")}
       >
-        Create Policy
+        Create PermissionPolicy 
       </Button>
       {policyPermissionData && policyPermissionData.length ? (
         <TableContainer component={Paper}>

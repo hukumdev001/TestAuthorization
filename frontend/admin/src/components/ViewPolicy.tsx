@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -39,7 +39,6 @@ function Row(props: { row: PolicyType; policy: any; setPolicies: any }) {
     await policy.delete(p.ID);
     setPolicies(await policy.getAll());
     toast.warning("Policy deleted!");
-    
   }
 
   return (
@@ -80,7 +79,7 @@ function Row(props: { row: PolicyType; policy: any; setPolicies: any }) {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                Policies
+                Permission
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
@@ -115,6 +114,7 @@ export default function ViewPolicy() {
   useEffect(() => {
     (async () => {
       const allPolicies = await policy.getAllPoliciesWithPermissions();
+      console.log("all Policyes", allPolicies);
       setPolicies(allPolicies);
     })();
   }, []);

@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/leapfrog/Documents/publisher/backend/auth'
+make: Leaving directory '/home/leapfrog/Documents/publisher/backend/auth'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

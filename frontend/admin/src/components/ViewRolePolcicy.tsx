@@ -91,7 +91,7 @@ export default function ViewRolePolicy() {
         style={{ marginBottom: "20px" }}
         onClick={() => navigate("/admin/create-policyrole")}
       >
-        Create Policy
+        Create RolePolicy
       </Button>
       {policyRoleData && policyRoleData.length ? (
         <TableContainer component={Paper}>

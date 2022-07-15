@@ -13,9 +13,10 @@ const init = async ({}) => {
   let connection
   try {
     log('connecting db')
-    registerModels()
+    log(process.env.MONGODB_URI)
+    // registerModels()
 
-    await mongoose.connect('mongodb://localhost:27017/publishers' || '')
+    await mongoose.connect(process.env.MONGODB_URI || '')
     connection = mongoose.connection
     log('DB connected successfully')
 
@@ -28,7 +29,10 @@ const init = async ({}) => {
 }
 
 function registerModels() {
-  require('./models/user')
+  require('./models/Article')
+  require('./models/ArticleHistory')
+  require('./models/Comment')
+  require('./models/Rating')
 }
 
 export default { init }

@@ -107,7 +107,6 @@ const PermissionForm: FC<{ type: string }> = ({ type }) => {
           handleSubmit={handleSubmit}
           type={type}
           errorX={errorX}
-          toValidate={[perm.resource, perm.action]}
         />
       </div>
     </div>

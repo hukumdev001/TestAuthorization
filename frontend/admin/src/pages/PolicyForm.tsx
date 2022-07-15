@@ -97,17 +97,6 @@ const PolicyForm: FC<{ type: string }> = ({ type }) => {
       });
       text = "created";
     } else {
-      if (pp && selected.length) {
-        await policyPermission.update(pp, {
-          policyid: [policyState.ID],
-          permissionid: selected,
-        });
-      } else if (selected.length && !pp) {
-        await policyPermission.create({
-          policyid: [policyState.ID],
-          permissionid: selected,
-        });
-      }
       if (params.id) await policy.updateWithAllowOrDeny(params.id, policies);
       text = "updated";
     }
@@ -138,11 +127,14 @@ const PolicyForm: FC<{ type: string }> = ({ type }) => {
         {type === "create" ? "Create a Policy" : `Edit: ${policyState.Name} `}
       </p>
       <div style={center}>
-        <SelectComponent
-          permissions={permissions}
-          handleChange={handleChange}
-          selected={selected}
-        />
+        {type == "create" ? (
+          <SelectComponent
+            permissions={permissions}
+            handleChange={handleChange}
+            selected={selected}
+          />
+        ) : null}
+
         <Input
           type={type}
           isEdit={policyState.Name}
@@ -160,7 +152,7 @@ const PolicyForm: FC<{ type: string }> = ({ type }) => {
           handleSubmit={handleSubmit}
           type={type}
           errorX={errorX}
-          toValidate={[policies.name, policies.kind]}
+    
         />
       </div>
     </div>
