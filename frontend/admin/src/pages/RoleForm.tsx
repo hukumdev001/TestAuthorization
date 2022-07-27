@@ -114,7 +114,7 @@ const RoleForm: FC<{ type: string }> = ({ type }) => {
       </p>
       <div style={center}>
         {
-          type == "created" ?  <SelectComponent2
+          type == "create" ?  <SelectComponent2
           policies={policies}
           handleChange={handleChange}
           selected={selected}
